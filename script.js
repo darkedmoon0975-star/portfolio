@@ -6,6 +6,7 @@
     scroll-behavior: smooth;
 }
 
+
 :root {
     --bg-color: #0b0f19;
     --card-bg: #121826;
