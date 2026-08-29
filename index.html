@@ -1,239 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dave Pañoso | ATM System & IT Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <title>Dave Panoso | IT Portfolio</title>
+    <style>
+        :root {
+            --bg-canvas: #0d1117;
+            --bg-surface: #161b22;
+            --border-color: #30363d;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --accent: #238636;
+            --accent-hover: #2ea043;
+            --link-blue: #58a6ff;
+            --btn-bg: #21262d;
+            --btn-border: #363b42;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Layout Container */
+        .portfolio-layout {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        aside {
+            width: 280px;
+            background-color: var(--bg-surface);
+            border-right: 1px solid var(--border-color);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .profile-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .profile-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #30363d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--link-blue);
+        }
+
+        .profile-info h1 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .profile-info p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .nav-item {
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(177, 186, 196, 0.12);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            height: 60px;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+        }
+
+        .header-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .content-body {
+            padding: 32px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .section-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .card {
+            background: var(--bg-canvas);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: var(--link-blue);
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--link-blue);
+            margin-bottom: 6px;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--link-blue);
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            margin-right: 4px;
+            margin-top: 8px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--accent-hover);
+        }
+    </style>
+</head>
 <body>
 
-    <!-- Navigation -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                Dave<span>.</span>
+    <div class="portfolio-layout">
+        <!-- Sidebar Navigation -->
+        <aside>
+            <div class="profile-card">
+                <div class="profile-avatar">DP</div>
+                <div class="profile-info">
+                    <h1>Dave Panoso</h1>
+                    <p>IT Support & System Admin</p>
+                </div>
             </div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#project">Project</a>
-                <a href="#demo">Demo</a>
-                <a href="#features">Features</a>
-                <a href="#resume">Resume</a>
-                <a href="#about">About</a>
-            </div>
-        </nav>
-    </header>
+            <ul class="nav-list">
+                <li class="nav-item active" id="navAbout">👤 About Me</li>
+                <li class="nav-item" id="navProjects">⚡ Projects</li>
+                <li class="nav-item" id="navSkills">🛠️ Technical Skills</li>
+                <li class="nav-item" id="navContact">📬 Contact</li>
+            </ul>
+        </aside>
 
-    <!-- HOME -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <p class="small-title">
-                APPLICATION DEVELOPMENT & IT PORTFOLIO
-            </p>
-            <h1>
-                ATM Management 
-                <span>System</span>
-            </h1>
-            <p class="description">
-                A desktop ATM application developed using C# 
-                and Windows Forms. This project demonstrates 
-                user authentication, balance management, 
-                deposits, withdrawals, and transaction logic.
-            </p>
-            <div class="buttons">
-                <a href="#project" class="btn">View Project</a>
-                <a href="#resume" class="btn-outline">View Resume</a>
-            </div>
-        </div>
-    </section>
+        <!-- Main Workspace -->
+        <div class="main-content">
+            <header>
+                <span class="header-title">dave-panoso / portfolio</span>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">GitHub Pages Active 🟢</span>
+            </header>
 
-    <!-- PROJECT -->
-    <section id="project" class="section">
-        <div class="section-title">
-            <p>01 — PROJECT</p>
-            <h2>ATM <span>Management System</span></h2>
-        </div>
+            <div class="content-body">
+                <!-- About View -->
+                <div id="aboutView" class="view-section">
+                    <div class="section-box">
+                        <h2>Profile Overview</h2>
+                        <p>IT professional with practical experience in network infrastructure administration, server deployment, hardware maintenance, and software development.</p>
+                        <p>Graduate with a Bachelor of Industrial Technology major in Computer Technology from Naga Extension Campus. Experienced in handling end-user support, system configurations, and enterprise environments.</p>
+                    </div>
+                </div>
 
-        <div class="project">
-            <div class="project-text">
-                <h3>About the Project</h3>
-                <p>
-                    The ATM Management System is a Windows Forms 
-                    desktop application created using C#.
-                </p>
-                <p>
-                    The application simulates common ATM operations 
-                    such as logging in, checking the account balance, 
-                    depositing money, and withdrawing money.
-                </p>
-                <p>
-                    This project demonstrates practical programming 
-                    concepts such as variables, data types, numeric 
-                    conversion, arithmetic operations, conditions, 
-                    and button click events.
-                </p>
-            </div>
+                <!-- Projects View -->
+                <div id="projectsView" class="view-section hidden">
+                    <div class="section-box">
+                        <h2>Featured Repositories & Projects</h2>
+                        <div class="grid-cards">
+                            <div class="card">
+                                <div class="card-title">IT Help Desk Ticketing System</div>
+                                <p>Web-based ticketing dashboard featuring role-based authentication, issue creation, and interactive tracking workflows hosted on GitHub Pages.</p>
+                                <span class="badge-tag">JavaScript</span>
+                                <span class="badge-tag">HTML/CSS</span>
+                            </div>
+                            <div class="card">
+                                <div class="card-title">Java Ticketing Console App</div>
+                                <p>Multi-stage console application developed in IntelliJ IDEA using object-oriented principles, custom classes, and database integration plans.</p>
+                                <span class="badge-tag">Java</span>
+                                <span class="badge-tag">OOP</span>
+                            </div>
+                            <div class="card">
+                                <div class="card-title">Ubuntu Server & Domain Controller</div>
+                                <p>Configured virtualized Linux environments via Oracle VM VirtualBox alongside Windows Server Active Directory deployments.</p>
+                                <span class="badge-tag">Linux</span>
+                                <span class="badge-tag">Active Directory</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="technology">
-                <h3>Technologies</h3>
-                <div class="tech">
-                    <span>C#</span>
-                    <span>Windows Forms</span>
-                    <span>Visual Studio</span>
+                <!-- Skills View -->
+                <div id="skillsView" class="view-section hidden">
+                    <div class="section-box">
+                        <h2>Technical Competencies</h2>
+                        <p><strong>Systems & Networking:</strong> FortiGate firewalls, core switches, IP addressing, Windows Server Active Directory, Dell iDRAC9, Ubuntu Server.</p>
+                        <p><strong>Hardware & Surveillance:</strong> Dahua NVR recorders, Hikvision cameras, OBSBOT PTZ devices, printer troubleshooting (Brother, Epson).</p>
+                        <p><strong>Development:</strong> Java, C# Windows Forms, SQL database queries, HTML/CSS/JavaScript frontends.</p>
+                    </div>
+                </div>
+
+                <!-- Contact View -->
+                <div id="contactView" class="view-section hidden">
+                    <div class="section-box">
+                        <h2>Get in Touch</h2>
+                        <p>Interested in collaborating or discussing IT support roles? Reach out directly:</p>
+                        <a href="mailto:dave@example.com" class="contact-btn">Send Email</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- DEMO -->
-    <section id="demo" class="demo-section">
-        <div class="section-title">
-            <p>02 — PROJECT DEMO</p>
-            <h2>ATM System <span>in Action</span></h2>
-            <p class="demo-description">
-                Watch a demonstration of my ATM Management System.
-            </p>
-        </div>
+    <script>
+        const navAbout = document.getElementById('navAbout');
+        const navProjects = document.getElementById('navProjects');
+        const navSkills = document.getElementById('navSkills');
+        const navContact = document.getElementById('navContact');
 
-        <div class="app-window">
-            <div class="window-header">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-                <span class="window-title">AtmApp.exe - Windows Forms</span>
-            </div>
-            <div class="video-container">
-                <video controls>
-                    <source src="atm-demo.mp4" type="video/mp4">
-                    Your browser does not support video playback.
-                </video>
-            </div>
-        </div>
-    </section>
+        const aboutView = document.getElementById('aboutView');
+        const projectsView = document.getElementById('projectsView');
+        const skillsView = document.getElementById('skillsView');
+        const contactView = document.getElementById('contactView');
 
-    <!-- FEATURES -->
-    <section id="features" class="features-section">
-        <div class="section-title">
-            <p>03 — FEATURES</p>
-            <h2>ATM <span>Functions</span></h2>
-        </div>
+        function switchPortfolioView(activeNav, activeView) {
+            [navAbout, navProjects, navSkills, navContact].forEach(n => n && n.classList.remove('active'));
+            [aboutView, projectsView, skillsView, contactView].forEach(v => v && v.classList.add('hidden'));
 
-        <div class="feature-container">
-            <div class="feature-card">
-                <div class="number">01</div>
-                <h3>Login & PIN</h3>
-                <p>Users enter their account information and PIN before accessing the ATM system.</p>
-            </div>
-            <div class="feature-card">
-                <div class="number">02</div>
-                <h3>Check Balance</h3>
-                <p>The system displays the user's current account balance.</p>
-            </div>
-            <div class="feature-card">
-                <div class="number">03</div>
-                <h3>Deposit</h3>
-                <p>Users can enter an amount and add it to their current balance.</p>
-            </div>
-            <div class="feature-card">
-                <div class="number">04</div>
-                <h3>Withdraw</h3>
-                <p>Users can withdraw money when sufficient funds are available.</p>
-            </div>
-            <div class="feature-card">
-                <div class="number">05</div>
-                <h3>Logout</h3>
-                <p>Users can safely end their ATM session.</p>
-            </div>
-            <div class="feature-card">
-                <div class="number">06</div>
-                <h3>Balance Calculation</h3>
-                <p>The system calculates and displays the updated account balance.</p>
-            </div>
-        </div>
-    </section>
+            if (activeNav) activeNav.classList.add('active');
+            if (activeView) activeView.classList.remove('hidden');
+        }
 
-    <!-- RESUME SECTION -->
-    <section id="resume" class="section">
-        <div class="section-title">
-            <p>04 — RESUME & EXPERIENCE</p>
-            <h2>Professional <span>Background</span></h2>
-        </div>
-
-        <div class="resume-container">
-            <!-- Summary -->
-            <div class="resume-block">
-                <h3>Professional Summary</h3>
-                <p>Motivated and detail-oriented IT professional with hands-on experience in technical support, network maintenance, and enterprise system deployments. Proven ability to manage hardware installations, OS and server configurations, and live-streaming setups[cite: 1].</p>
-            </div>
-
-            <!-- Experience -->
-            <div class="resume-block">
-                <h3>Experience</h3>
-                <div class="job-item">
-                    <h4>IT Associate — Skyeagle Entertainment</h4>
-                    <ul>
-                        <li>Maintain corporate IT systems and local network infrastructure to ensure maximum uptime[cite: 1].</li>
-                        <li>Deploy and configure Windows OS and business software applications[cite: 1].</li>
-                        <li>Provide tier-1 technical support, hardware/software troubleshooting, and printer maintenance[cite: 1].</li>
-                        <li>Lead camera equipment installation and manage live-streaming infrastructure[cite: 1].</li>
-                    </ul>
-                </div>
-                <div class="job-item">
-                    <h4>IT Intern — Taiheiyo Cement Inc. <span class="job-date">(Sept 2024 - Jul 2025)</span>[cite: 1]</h4>
-                    <ul>
-                        <li>Assisted network team in maintaining plant-wide IT systems and infrastructure connectivity[cite: 1].</li>
-                        <li>Participated in the installation, setup, and baseline configuration of SAP HANA database environments[cite: 1].</li>
-                        <li>Resolved end-user technical support requests to minimize operational downtime[cite: 1].</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Education -->
-            <div class="resume-block">
-                <h3>Education</h3>
-                <div class="job-item">
-                    <h4>Bachelor of Information Technology Major in Computer Technology</h4>
-                    <p>Cebu Technological University - Naga Extension Campus | Graduated: 2025[cite: 1]</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="about">
-        <div class="about-content">
-            <p class="small-title">05 — ABOUT ME</p>
-            <h2>
-                Hello, I'm 
-                <span>Dave Pañoso.</span>
-            </h2>
-            <p>
-                I am an IT professional and developer interested in application development and technology. 
-                I created this ATM System as a practical programming project to develop my C# 
-                programming skills and understand how application logic works.
-            </p>
-
-            <div class="skills">
-                <span>C#</span>
-                <span>Windows Forms</span>
-                <span>Visual Studio</span>
-                <span>Ubuntu Server</span>
-                <span>SAP HANA</span>
-                <span>Networking</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2026 Dave G. Pañoso</p>
-        <p>09563751833 | darkedmoon0975@gmail.com</p>
-    </footer>
-
+        if (navAbout) navAbout.addEventListener('click', () => switchPortfolioView(navAbout, aboutView));
+        if (navProjects) navProjects.addEventListener('click', () => switchPortfolioView(navProjects, projectsView));
+        if (navSkills) navSkills.addEventListener('click', () => switchPortfolioView(navSkills, skillsView));
+        if (navContact) navContact.addEventListener('click', () => switchPortfolioView(navContact, contactView));
+    </script>
 </body>
-
 </html>
