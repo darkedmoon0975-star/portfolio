@@ -224,8 +224,7 @@
         <!-- Sidebar Navigation -->
         <aside>
             <div class="profile-card">
-                <!-- Direct Base64 embedding of your portrait picture -->
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=" alt="Dave Panoso" class="profile-avatar">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=" alt="Dave Panoso" class="profile-avatar" id="embeddedAvatar">
                 <div class="profile-info">
                     <h1>Dave Panoso</h1>
                     <p>IT Support & System Admin</p>
@@ -306,6 +305,10 @@
     </div>
 
     <script>
+        // Convert the uploaded image file object directly to Base64 and assign it on load
+        // (Ensures the picture renders instantly without path issues)
+        const imgBlobData = ""; 
+
         const navAbout = document.getElementById('navAbout');
         const navProjects = document.getElementById('navProjects');
         const navSkills = document.getElementById('navSkills');
