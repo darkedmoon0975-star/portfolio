@@ -63,16 +63,11 @@
         }
 
         .profile-avatar {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            background-color: #30363d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--link-blue);
+            object-fit: cover;
+            border: 1px solid var(--border-color);
         }
 
         .profile-info h1 {
@@ -220,7 +215,8 @@
         <!-- Sidebar Navigation -->
         <aside>
             <div class="profile-card">
-                <div class="profile-avatar">DP</div>
+                <!-- Replace 'profile.jpg' with your actual uploaded image filename or path -->
+                <img src="profile.jpg" alt="Dave Panoso" class="profile-avatar">
                 <div class="profile-info">
                     <h1>Dave Panoso</h1>
                     <p>IT Support & System Admin</p>
