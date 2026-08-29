@@ -63,21 +63,30 @@
         }
 
         .profile-avatar {
-            width: 52px;
-            height: 52px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             object-fit: cover;
             border: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .profile-info {
+            overflow: hidden;
         }
 
         .profile-info h1 {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .profile-info p {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .nav-list {
@@ -215,7 +224,6 @@
         <!-- Sidebar Navigation -->
         <aside>
             <div class="profile-card">
-                <!-- Replace 'profile.jpg' with your actual uploaded image filename or path -->
                 <img src="profile.jpg" alt="Dave Panoso" class="profile-avatar">
                 <div class="profile-info">
                     <h1>Dave Panoso</h1>
